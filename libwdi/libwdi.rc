@@ -70,7 +70,7 @@ BEGIN
             VALUE "FileDescription", "libwdi: Windows Driver Installer Library"
             VALUE "FileVersion", "1.4.1.768"
             VALUE "InternalName", "libwdi"
-            VALUE "LegalCopyright", "© 2010-2022 Pete Batard (LGPL v3)"
+            VALUE "LegalCopyright", "?2010-2022 Pete Batard (LGPL v3)"
             VALUE "LegalTrademarks", "https://www.gnu.org/copyleft/lesser.html"
             VALUE "OriginalFilename", "libwdi"
             VALUE "ProductName", "libwdi"
