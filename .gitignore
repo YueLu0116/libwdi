@@ -25,6 +25,7 @@
 *.suo
 *.swp
 *.user
+*tmp
 .deps
 .libs
 Debug
