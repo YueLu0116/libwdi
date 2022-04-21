@@ -1,4 +1,4 @@
-#include "../libwdi/libwdi.h"
+#include "../../libwdi/libwdi.h"
 
 #include <cstdio>
 #include <iostream>
