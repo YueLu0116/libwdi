@@ -4,12 +4,26 @@
 #include <cstdio>
 #include <string>
 
-static char desc_[] = "Android Accessory (pre installed)";
+static char desc_[] = "Android Accessory (pre installed2)";
 const uint16_t    vid_ = 0x18d1;
 const uint16_t    pid_ = 0x2d00;
-static char infName_[] = "aoa_test.inf";
+static char infName_[] = "aoa_test0422.inf";
 static char driverDir_[] = "tmp";
 
+HWND GetConsoleHwnd(void)
+{
+	HWND hwndFound;
+	char pszNewWindowTitle[128];
+	char pszOldWindowTitle[128];
+
+	GetConsoleTitleA(pszOldWindowTitle, 128);
+	wsprintfA(pszNewWindowTitle, "%d/%d", GetTickCount(), GetCurrentProcessId());
+	SetConsoleTitleA(pszNewWindowTitle);
+	Sleep(40);
+	hwndFound = FindWindowA(NULL, pszNewWindowTitle);
+	SetConsoleTitleA(pszOldWindowTitle);
+	return hwndFound;
+}
 
 int main(int argc, char* argv[]) {
 	wdi_device_info dev{ nullptr, vid_, pid_, false, 0, desc_, nullptr, nullptr, nullptr };
@@ -30,6 +44,8 @@ int main(int argc, char* argv[]) {
 	ocl.list_hubs = true;
 	ocl.trim_whitespaces = true;
 	opd.driver_type = WDI_WINUSB;
+	oid.hWnd = GetConsoleHwnd();
+	oic.hWnd = oid.hWnd;
 
 	wdi_set_log_level(log_level);
 
