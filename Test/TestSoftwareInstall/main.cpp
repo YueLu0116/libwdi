@@ -4,10 +4,12 @@
 #include <cstdio>
 #include <string>
 
-static char desc_[] = "Android Accessory (pre installed2)";
-const uint16_t    vid_ = 0x18d1;
-const uint16_t    pid_ = 0x2d00;
-static char infName_[] = "aoa_test0422.inf";
+#pragma comment(lib, "libwdi.lib")
+
+static char desc_[] = "Xbox (pre installed2)";
+const uint16_t    vid_ = 0x045E;
+const uint16_t    pid_ = 0x0289;
+static char infName_[] = "xbox_test0424.inf";
 static char driverDir_[] = "tmp";
 
 HWND GetConsoleHwnd(void)
