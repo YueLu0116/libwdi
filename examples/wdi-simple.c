@@ -80,6 +80,7 @@ void usage(void)
 // from http://support.microsoft.com/kb/124103/
 HWND GetConsoleHwnd(void)
 {
+	// MessageBox(NULL, L"Enter GetConsoleWindow", L"Test", MB_OK);
 	HWND hwndFound;
 	char pszNewWindowTitle[128];
 	char pszOldWindowTitle[128];
@@ -89,6 +90,12 @@ HWND GetConsoleHwnd(void)
 	SetConsoleTitleA(pszNewWindowTitle);
 	Sleep(40);
 	hwndFound = FindWindowA(NULL, pszNewWindowTitle);
+	if (hwndFound) {
+		printf("find console window!\n");
+	}
+	else {
+		printf("console window is null\n");
+	}
 	SetConsoleTitleA(pszOldWindowTitle);
 	return hwndFound;
 }
@@ -147,10 +154,20 @@ int __cdecl main(int argc, char** argv)
 		case 2: // --filter
 			oid.install_filter_driver = TRUE;
 			break;
-		case 'b':
-			oid.hWnd = (optarg) ? (HWND)(uintptr_t)strtol(optarg, NULL, 0) : GetConsoleHwnd();
+		case 'b': {
+			// oid.hWnd = (optarg) ? (HWND)(uintptr_t)strtol(optarg, NULL, 0) : GetConsoleHwnd();
+			if (optarg) {
+				oid.hWnd = (HWND)(uintptr_t)strtol(optarg, NULL, 0);
+				printf("optarg is NOT null. hwnd=%ld\n", (LONG)(oid.hWnd));
+			}
+			else {
+				oid.hWnd = GetConsoleHwnd();
+				printf("optarg is null. hwnd=%ld\n", (LONG)(oid.hWnd));
+			}
 			oic.hWnd = oid.hWnd;
 			break;
+		}
+
 		case 'c':
 			cert_name = optarg;
 			break;

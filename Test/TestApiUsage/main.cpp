@@ -24,16 +24,16 @@ int main(int argc, char* argv[]) {
         for (device = list; device != NULL; device = device->next) {
             printf("Installing driver for [USB device: \"%s\" (%04X:%04X) driver type=%s]\n",
                 device->desc, device->vid, device->pid, device->driver);
-            if (isTarget(static_cast<uint16_t>(device->vid), static_cast<uint16_t>(device->pid))) {
-                printf("Find the target device! [device=%s]", device->desc);
-                if (wdi_prepare_driver(device, DEFAULT_DIR.c_str(), INF_NAME.c_str(), &optPrepare) == WDI_SUCCESS) {
-                    printf("Done for preparing driver.\n");
-                    if (wdi_install_driver(device, DEFAULT_DIR.c_str(), INF_NAME.c_str(), NULL) == WDI_SUCCESS) {
-                        printf("Done for installing driver.\n");
-                    }
-                }
-                break;
-            }
+            //if (isTarget(static_cast<uint16_t>(device->vid), static_cast<uint16_t>(device->pid))) {
+            //    printf("Find the target device! [device=%s]", device->desc);
+            //    if (wdi_prepare_driver(device, DEFAULT_DIR.c_str(), INF_NAME.c_str(), &optPrepare) == WDI_SUCCESS) {
+            //        printf("Done for preparing driver.\n");
+            //        if (wdi_install_driver(device, DEFAULT_DIR.c_str(), INF_NAME.c_str(), NULL) == WDI_SUCCESS) {
+            //            printf("Done for installing driver.\n");
+            //        }
+            //    }
+            //    break;
+            //}
         }
     }
     else {
